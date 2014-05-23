@@ -132,3 +132,18 @@ gulp.task('watch', ['connect', 'serve'], function () {
     gulp.watch('app/images/**/*', ['images']);
     gulp.watch('bower.json', ['wiredep']);
 });
+
+gulp.task('server', function () {
+    var spawn = require('child_process').spawn;
+    var log = function (data) {
+        console.log('[Divshot] ' + data.toString().trim());
+    };
+
+    var server = spawn('divshot', ['server', '--port', '3000']);
+
+    server.on('error', function (error) {
+        console.log(error.stack);
+    });
+    server.stdout.on('data', log);
+    server.stderr.on('data', log);
+});
