@@ -1,0 +1,8 @@
+{
+  "name": "lesbose",
+  "root": "./dist",
+  "clean_urls": true,
+  "error_page": "./dist/404.html",
+  "cache_control": {},
+  "routes": {}
+}
