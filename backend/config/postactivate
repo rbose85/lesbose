@@ -1,0 +1,44 @@
+#!/usr/bin/env zsh
+# This hook is run after this virtualenv is activated.
+
+# symlink this file to venv postactivate
+#
+#   $ cdvirtualenv
+#   $ cd bin
+#   $ rm postactivate
+#   $ ln -s path/to/proj/backend/config/postactivate postactivate
+#
+
+proj_path () {
+    local var
+
+    var="$VIRTUALENVWRAPPER_PROJECT_FILENAME"
+    if [ -z "$VIRTUALENVWRAPPER_PROJECT_FILENAME" ] ; then
+        echo "WARNING: Unable to locate env variable, $var"
+        return 1
+    fi
+
+    var="$VIRTUAL_ENV"
+    if [ -z "$VIRTUAL_ENV" ] ; then
+        echo "WARNING: Unable to locate env variable, $var"
+        return 1
+    fi
+
+    var="$VIRTUAL_ENV/$VIRTUALENVWRAPPER_PROJECT_FILENAME"
+    proj=$(/bin/cat $var)
+    echo $proj
+}
+
+run_script () {
+    [ -r $1 ] || { echo "WARNING: Unable to locate file, $1"; return 1 }
+    . $1
+}
+
+export PYTHONPATH="$(proj_path)/backend"
+export DJANGO_SETTINGS_MODULE='les.settings'
+
+run_script "$(proj_path)/backend/config/secret-key"
+run_script "$(proj_path)/backend/config/passwd-db"
+
+unset -f proj_path
+unset -f run_script
