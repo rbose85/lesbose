@@ -1,6 +1,8 @@
 
 # backend
 
+backend/*.pyc
+
 backend/config/secret-key
 backend/config/passwd-db
 
