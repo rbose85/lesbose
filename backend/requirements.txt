@@ -1,0 +1,7 @@
+
+# PostgreSQL
+psycopg2==2.5.3
+
+# Django
+Django==1.6.5
+pytz==2014.3
