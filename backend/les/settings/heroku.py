@@ -24,3 +24,12 @@ DATABASES['default'].update({
     'PASSWORD': get_env_setting('DATABASE_PASSWORD'),
     'HOST': get_env_setting('DATABASE_HOST'),
 })
+
+INSTALLED_APPS += (
+    'gunicorn',
+)
+
+
+#### HEROKU
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
