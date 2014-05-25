@@ -4,9 +4,7 @@ from django.core.exceptions import ImproperlyConfigured
 
 
 def get_env_setting(setting):
-    """
-    Return an environment variable, or raise an exception.
-    """
+    """Return the value of an environment variable, or raise an exception."""
     try:
         return os.environ[setting]
     except KeyError:
@@ -14,18 +12,24 @@ def get_env_setting(setting):
         raise ImproperlyConfigured(error_msg)
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+#### DJANGO
 
-SECRET_KEY = get_env_setting('SECRET_KEY')
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
-DEBUG = True
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = ['localhost', ]
+ROOT_URLCONF = 'les.urls'
 
 
-# Application definition
+#### DJANGO: django.conf.global_settings
+
+TIME_ZONE = 'UTC'
+
+USE_TZ = True
+
+LANGUAGE_CODE = 'en-gb'
+
+USE_I18N = True
+
+USE_L10N = True
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -36,8 +40,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 )
 
-# don't forget project apps, too ...
-INSTALLED_APPS += ()
+SECRET_KEY = get_env_setting('SECRET_KEY')
+
+STATIC_URL = '/static/'
+
+WSGI_APPLICATION = 'les.wsgi.application'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -47,28 +54,3 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
-ROOT_URLCONF = 'les.urls'
-
-WSGI_APPLICATION = 'les.wsgi.application'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'lesbose_db',
-        'USER': 'lesbose_user',
-        'PASSWORD': get_env_setting('DATABASE_LOCAL_PASSWORD')
-    }
-}
-
-LANGUAGE_CODE = 'en-gb'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
-STATIC_URL = '/static/'
