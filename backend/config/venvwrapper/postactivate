@@ -37,8 +37,8 @@ run_script () {
 export PYTHONPATH="$(proj_path)/backend"
 export DJANGO_SETTINGS_MODULE='les.settings.local'
 
-run_script "$(proj_path)/backend/config/secret-key"
-run_script "$(proj_path)/backend/config/passwd-db"
+run_script "$(proj_path)/backend/config/venvwrapper/secret-key"
+run_script "$(proj_path)/backend/config/venvwrapper/database"
 
 unset -f proj_path
 unset -f run_script
