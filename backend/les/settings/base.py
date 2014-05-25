@@ -31,6 +31,12 @@ USE_I18N = True
 
 USE_L10N = True
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2'
+    }
+}
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
