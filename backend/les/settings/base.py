@@ -66,3 +66,10 @@ MIDDLEWARE_CLASSES = (
 )
 
 AUTH_USER_MODEL = 'authentication.user'
+
+
+#### DJANGO REST FRAMEWORK: rest_framework.settings
+
+INSTALLED_APPS += (
+    'rest_framework',
+)
