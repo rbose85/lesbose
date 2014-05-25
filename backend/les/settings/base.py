@@ -38,12 +38,16 @@ DATABASES = {
 }
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+)
+
+# don't forget project apps ..
+INSTALLED_APPS += (
+    'authentication',
+    'core'
 )
 
 SECRET_KEY = get_env_setting('SECRET_KEY')
@@ -60,3 +64,5 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+AUTH_USER_MODEL = 'authentication.user'
