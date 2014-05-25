@@ -1,6 +1,12 @@
 from .base import *
 
 
+#### PROJECT
+
+PROJECT = 'lesbose-local'
+SITE_DOMAIN = 'localhost'
+
+
 #### DJANGO
 
 DEBUG = True
@@ -19,9 +25,3 @@ DATABASES = {
         'PASSWORD': get_env_setting('DATABASE_LOCAL_PASSWORD')
     }
 }
-
-
-#### PROJECT
-
-PROJECT = 'lesbose-local'
-SITE_DOMAIN = 'localhost'
