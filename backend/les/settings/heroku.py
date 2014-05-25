@@ -6,8 +6,7 @@ from .base import *
 #### PROJECT
 
 PROJECT = 'lesbose-heroku'
-SITE_DOMAIN = 'api.lesbose.com'
-HEROKU_DOMAIN = 'lesbose.herokuapp.com'
+SITE_DOMAIN = 'lesbose.herokuapp.com'
 
 
 #### DJANGO
@@ -15,7 +14,7 @@ HEROKU_DOMAIN = 'lesbose.herokuapp.com'
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = [HEROKU_DOMAIN, SITE_DOMAIN, ]
+ALLOWED_HOSTS = [SITE_DOMAIN, ]
 
 
 #### DJANGO: django.conf.global_settings
