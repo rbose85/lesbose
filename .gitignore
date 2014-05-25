@@ -3,8 +3,8 @@
 
 backend/*.pyc
 
-backend/config/secret-key
-backend/config/database
+backend/config/venvwrapper/secret-key
+backend/config/venvwrapper/database
 
 
 # webapp
