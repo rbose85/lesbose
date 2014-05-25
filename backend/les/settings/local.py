@@ -12,7 +12,7 @@ SITE_DOMAIN = 'localhost'
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', ]
+ALLOWED_HOSTS = [SITE_DOMAIN, ]
 
 
 #### DJANGO: django.conf.global_settings
