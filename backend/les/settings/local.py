@@ -22,3 +22,8 @@ DATABASES['default'].update({
     'USER': 'lesbose_user',
     'PASSWORD': get_env_setting('DATABASE_PASSWORD')
 })
+
+# don't forget project apps ..
+INSTALLED_APPS += (
+    'les',
+)
