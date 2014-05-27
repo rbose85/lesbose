@@ -13,6 +13,16 @@ from .models import User
 
 logger = logging.getLogger(__name__)
 
+DARING_DEVELOPERS = {
+    'Admin': {
+        'username': 'admin',
+        'email': 'admin@dev.lesbose.com',
+        'password': 'password',
+        'isActive': True,
+        'isAdmin': True,
+    },
+}
+
 
 class Fakes(AbstractBaseFakes):
     """
@@ -91,7 +101,15 @@ class Fakes(AbstractBaseFakes):
             logger.error('Cannot run fakes, {}.'.format(__file__))
             raise ImproperlyConfigured
 
-        # create objs, and save
-        users = self.create_users()
-        for user in users:
-            user.save()
+        users = []
+
+        # create objs of known deets
+        for i in DARING_DEVELOPERS:
+            users.append(self.create_user(deets=DARING_DEVELOPERS[i]))
+
+        # create objs of random deets
+        users += self.create_users()
+
+        # persist objs to db
+        for obj in users:
+            obj.save()
