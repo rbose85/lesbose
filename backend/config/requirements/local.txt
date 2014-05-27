@@ -1,1 +1,4 @@
 -r base.txt
+
+# dummy data
+fake-factory==0.4.0
