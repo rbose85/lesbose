@@ -79,8 +79,8 @@ class Fakes(AbstractBaseFakes):
             count = 500
 
         users = []
-        for i in range(0, count+1):
-            while i != len(users):          # equality after 'users.append()'
+        for i in range(0, count + 1):
+            while i != len(users):  # equality after 'users.append()'
                 user = self.create_user()
                 if self.is_unique_user(collection=users, obj=user):
                     users.append(user)
