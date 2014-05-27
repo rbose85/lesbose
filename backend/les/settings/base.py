@@ -47,7 +47,8 @@ INSTALLED_APPS = (
 # don't forget project apps ..
 INSTALLED_APPS += (
     'authentication',
-    'core'
+    'core',
+    'profiles',
 )
 
 SECRET_KEY = get_env_setting('SECRET_KEY')
