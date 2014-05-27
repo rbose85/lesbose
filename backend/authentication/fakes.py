@@ -2,6 +2,7 @@ import string
 import logging
 
 from django.conf import settings
+from django.contrib.auth import hashers
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.crypto import get_random_string, random
 from faker import Faker
@@ -55,7 +56,7 @@ class Fakes(AbstractBaseFakes):
         p = deets['password'] if deets.get('password') else self.random_passwd()
 
         # create new User instance
-        obj = User(username=u, email=e, password=p)
+        obj = User(username=u, email=e, password=hashers.make_password(p))
 
         # activate new User ?
         obj.is_active = self.random_bool()
