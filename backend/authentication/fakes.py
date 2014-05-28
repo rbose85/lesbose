@@ -26,7 +26,7 @@ DARING_DEVELOPERS = {
 
 class Fakes(AbstractBaseFakes):
     """
-    fakes for core.User
+    fakes for custom auth.User
     """
 
     @staticmethod
