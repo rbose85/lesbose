@@ -1,9 +1,6 @@
-import string
 import logging
 
-from django.conf import settings
 from django.contrib.auth import hashers
-from django.core.exceptions import ImproperlyConfigured
 from django.utils.crypto import get_random_string, random
 from faker import Faker
 
@@ -18,33 +15,16 @@ DARING_DEVELOPERS = [
         'username': 'admin',
         'email': 'admin@dev.lesbose.com',
         'password': 'password',
-        'isActive': True,
-        'isAdmin': True,
+        'is_active': True,
+        'is_superuser': True,
     },
 ]
 
 
 class Fakes(AbstractBaseFakes):
     """
-    fakes for custom auth.User
+    fakes for custom auth User
     """
-
-    @staticmethod
-    def random_passwd():
-        size = 128
-        chrs = string.letters + string.digits
-        return get_random_string(length=size, allowed_chars=chrs)
-
-    @staticmethod
-    def random_bool():
-        return bool(random.randint(0, 1))
-
-    @staticmethod
-    def random_deets():
-        details = Faker(locale='en_GB').simple_profile()
-        details['email'] = details['mail']
-        del details['mail']
-        return details
 
     @staticmethod
     def is_unique_user(collection, obj):
@@ -52,63 +32,51 @@ class Fakes(AbstractBaseFakes):
         return not bool([x for x in collection if (x.email == obj.email) or
                                                   (x.username == obj.username)])
 
-    def create_user(self, deets=None):
+    @staticmethod
+    def random_fields():
+        fake = Faker(locale='en_GB')
+        return {
+            'username': fake.user_name(),
+            'email': fake.email(),
+            'password': get_random_string(length=128),
+            'is_active': bool(random.randint(0, 1)),
+            'is_superuser': False,
+        }
+
+    def create_obj(self, fields=None):
         """
-        Return an un-saved User obj from provided details dict.
-        :param deets: a dict of details for the User.
-        :return User: the newly create instance obj.
+        Return an un-saved obj from provided dict.
+        :param fields: a dict of fields for the new obj.
+        :return: the newly create instance obj.
         """
-        if not deets:
-            deets = self.random_deets()
+        if not fields:
+            fields = self.random_fields()
+        fields['password'] = hashers.make_password(fields['password'])
+        return User(**fields)
 
-        u = deets['username']
-        e = deets['email']
-        p = deets['password'] if deets.get('password') else self.random_passwd()
-
-        # create new User instance
-        obj = User(username=u, email=e, password=hashers.make_password(p))
-
-        # activate new User ?
-        obj.is_active = self.random_bool()
-        if deets.get('isActive'):
-            obj.is_active = bool(deets['isActive'])
-
-        # upgrade new User ?
-        if 'isAdmin' in deets and deets['isAdmin']:
-            obj.is_superuser = True
-
-        return obj
-
-    def create_users(self, count=None):
+    def create_objs(self, count=500):
         """
-        Return a list of new User objs with random details.
-        :param count: total number of User objs to be create.
-        :return: a list of new User obj.
+        Return a list of new objs with random fields.
+        :param count: total number of objs to be create.
+        :return: a list of new objs.
         """
-        if not count:
-            count = 500
-
         users = []
         for i in range(0, count + 1):
             while i != len(users):  # equality after 'users.append()'
-                user = self.create_user()
+                user = self.create_obj()
                 if self.is_unique_user(collection=users, obj=user):
                     users.append(user)
         return users
 
     def execute(self):
-        if not settings.DEBUG:
-            logger.error('Cannot run fakes, {}.'.format(__file__))
-            raise ImproperlyConfigured
-
         users = []
 
-        # create objs of known deets
-        for i in DARING_DEVELOPERS:
-            users.append(self.create_user(deets=i))
+        # create objs of known fields
+        for daredev in DARING_DEVELOPERS:
+            users.append(self.create_obj(fields=daredev))
 
-        # create objs of random deets
-        users += self.create_users()
+        # create objs of random fields
+        users.extend(self.create_objs())
 
         # persist objs to db
         for obj in users:
