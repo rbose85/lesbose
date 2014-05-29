@@ -75,7 +75,7 @@ class Command(NoArgsCommand):
         Entry point for command. Add custom actions here.
         """
 
-        logger.info('Begin Custom Command: {}'.format(__name__))
+        logger.info('{} ...'.format(__name__))
 
         apps = get_installed_apps()
 
