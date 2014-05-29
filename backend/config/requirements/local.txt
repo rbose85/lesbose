@@ -1,4 +1,7 @@
 -r base.txt
 
+# debugging
+ipython==2.1.0
+
 # dummy data
 fake-factory==0.4.0
