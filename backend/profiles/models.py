@@ -14,5 +14,5 @@ class AccountHolder(TimeStampModel):
                                   default='')
     last_name = models.CharField('Surname', max_length=30, blank=False,
                                  default='')
-    date_of_birth = models.DateField('Date of Birth', null=True, blank=True,
-                                     default=None)
+    birth_date = models.DateField('Date of Birth', null=True, blank=True,
+                                  default=None)
