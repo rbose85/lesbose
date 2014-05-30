@@ -1,4 +1,9 @@
 
+
+# dev specific
+NOTES.md
+
+
 # backend
 
 backend/*.pyc
