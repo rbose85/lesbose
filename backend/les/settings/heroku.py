@@ -11,8 +11,8 @@ SITE_DOMAIN = 'lesbose.herokuapp.com'
 
 #### DJANGO
 
-DEBUG = True
-TEMPLATE_DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = [SITE_DOMAIN, ]
 
