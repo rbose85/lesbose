@@ -69,12 +69,12 @@ LOGGING = {
         },
 
         #### P R O J E C T ####
-        '': {
+        'les.management.commands': {
             'handlers': ['console-simple'],
             'level': 'INFO',
             'propagate': False,
         },
-        'les.management.commands': {
+        '': {
             'handlers': ['console-simple'],
             'level': 'INFO',
             'propagate': False,
