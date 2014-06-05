@@ -25,6 +25,10 @@ INSTALLED_APPS += (
     'gunicorn',
 )
 
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
+
 
 #### HEROKU
 
