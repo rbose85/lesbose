@@ -5,7 +5,7 @@ from .base import *
 
 #### PROJECT
 
-PROJECT = 'lesbose-heroku'
+PROJECT += '-heroku'
 SITE_DOMAIN = 'lesbose.herokuapp.com'
 
 

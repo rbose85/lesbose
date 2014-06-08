@@ -3,7 +3,7 @@ from .base import *
 
 #### PROJECT
 
-PROJECT = 'lesbose-local'
+PROJECT += '-local'
 SITE_DOMAIN = 'localhost'
 
 
