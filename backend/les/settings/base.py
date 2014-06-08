@@ -14,7 +14,7 @@ def get_env_setting(setting):
 
 #### DJANGO
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 ROOT_URLCONF = 'les.urls'
 
