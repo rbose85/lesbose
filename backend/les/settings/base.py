@@ -12,6 +12,12 @@ def get_env_setting(setting):
         raise ImproperlyConfigured(error_msg)
 
 
+#### PROJECT
+
+PROJECT = 'lesbose'
+SITE_DOMAIN = None
+
+
 #### DJANGO
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
