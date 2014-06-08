@@ -20,7 +20,7 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 SITE_DOMAIN = None
 
 
-#### DJANGO
+#### DJANGO: https://docs.djangoproject.com/en/dev/ref/settings/
 
 ROOT_URLCONF = 'les.urls'
 
