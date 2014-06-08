@@ -15,12 +15,12 @@ def get_env_setting(setting):
 #### PROJECT
 
 PROJECT = 'lesbose'
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+
 SITE_DOMAIN = None
 
 
 #### DJANGO
-
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 ROOT_URLCONF = 'les.urls'
 
