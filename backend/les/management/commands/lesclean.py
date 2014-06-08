@@ -36,7 +36,7 @@ class Command(NoArgsCommand):
             return []
 
         matches = []
-        for root, dirnames, filenames in os.walk(settings.BASE_DIR):
+        for root, dirnames, filenames in os.walk(settings.PROJECT_DIR):
             for filename in fnmatch.filter(filenames, pattern):
                 matches.append(os.path.join(root, filename))
         return matches
