@@ -72,7 +72,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-AUTH_USER_MODEL = 'authentication.user'
+AUTH_USER_MODEL = 'authentication.User'
 
 
 #### DJANGO REST FRAMEWORK: rest_framework.settings
