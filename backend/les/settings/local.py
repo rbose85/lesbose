@@ -3,7 +3,7 @@ from .base import *
 
 #### PROJECT
 
-PROJECT = 'lesbose-local'
+PROJECT += '-local'
 SITE_DOMAIN = 'localhost'
 
 
@@ -12,7 +12,7 @@ SITE_DOMAIN = 'localhost'
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = [SITE_DOMAIN, ]
+ALLOWED_HOSTS = [SITE_DOMAIN, '127.0.0.1', ]
 
 
 #### DJANGO: django.conf.global_settings
@@ -28,6 +28,8 @@ INSTALLED_APPS += (
     'les',
 )
 
+WSGI_APPLICATION = 'les.wsgi.local.application'
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -37,7 +39,7 @@ LOGGING = {
             'format': '%(levelname)s %(message)s'
         },
         'verbose': {
-            'format': "%(levelname)s [%(name)s:%(lineno)s] %(message)s"
+            'format': '%(levelname)s [%(name)s:%(lineno)s] %(message)s'
         },
     },
 
@@ -69,12 +71,12 @@ LOGGING = {
         },
 
         #### P R O J E C T ####
-        '': {
+        'les.management.commands': {
             'handlers': ['console-simple'],
             'level': 'INFO',
             'propagate': False,
         },
-        'les.management.commands': {
+        '': {
             'handlers': ['console-simple'],
             'level': 'INFO',
             'propagate': False,

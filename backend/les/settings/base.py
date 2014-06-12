@@ -12,9 +12,15 @@ def get_env_setting(setting):
         raise ImproperlyConfigured(error_msg)
 
 
-#### DJANGO
+#### PROJECT
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+PROJECT = 'lesbose'
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+
+SITE_DOMAIN = None
+
+
+#### DJANGO: https://docs.djangoproject.com/en/dev/ref/settings/
 
 ROOT_URLCONF = 'les.urls'
 
@@ -53,9 +59,9 @@ INSTALLED_APPS += (
 
 SECRET_KEY = get_env_setting('SECRET_KEY')
 
+STATIC_ROOT = os.path.join(PROJECT_PATH, 'staticfiles')
 STATIC_URL = '/static/'
 
-WSGI_APPLICATION = 'les.wsgi.application'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
