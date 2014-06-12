@@ -25,6 +25,8 @@ INSTALLED_APPS += (
     'gunicorn',
 )
 
+WSGI_APPLICATION = 'les.wsgi.heroku.application'
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
