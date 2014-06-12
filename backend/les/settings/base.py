@@ -61,7 +61,6 @@ SECRET_KEY = get_env_setting('SECRET_KEY')
 
 STATIC_URL = '/static/'
 
-WSGI_APPLICATION = 'les.wsgi.application'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
