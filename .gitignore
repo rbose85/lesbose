@@ -11,6 +11,8 @@ backend/*.pyc
 backend/config/venvwrapper/secret-key
 backend/config/venvwrapper/database
 
+backend/staticfiles
+
 
 # webapp
 
