@@ -28,6 +28,8 @@ INSTALLED_APPS += (
     'les',
 )
 
+WSGI_APPLICATION = 'les.wsgi.local.application'
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
