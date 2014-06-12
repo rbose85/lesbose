@@ -12,7 +12,7 @@ SITE_DOMAIN = 'localhost'
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = [SITE_DOMAIN, ]
+ALLOWED_HOSTS = [SITE_DOMAIN, '127.0.0.1', ]
 
 
 #### DJANGO: django.conf.global_settings
@@ -39,7 +39,7 @@ LOGGING = {
             'format': '%(levelname)s %(message)s'
         },
         'verbose': {
-            'format': "%(levelname)s [%(name)s:%(lineno)s] %(message)s"
+            'format': '%(levelname)s [%(name)s:%(lineno)s] %(message)s'
         },
     },
 
