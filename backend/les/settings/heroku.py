@@ -38,10 +38,7 @@ LOGGING = {
             'format': '%(levelname)s %(message)s'
         },
         'verbose': {
-            'format': ('%(asctime)s [%(process)d] [%(levelname)s] ' +
-                       'pathname=%(pathname)s lineno=%(lineno)s ' +
-                       'funcname=%(funcName)s %(message)s'),
-            'datefmt': '%Y-%m-%d %H:%M:%S',
+            'format': '%(levelname)s [%(name)s:%(lineno)s] %(message)s'
         },
     },
 
@@ -68,11 +65,6 @@ LOGGING = {
         },
 
         #### P R O J E C T ####
-        'les.management.commands': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': False,
-        },
         '': {
             'handlers': ['console'],
             'level': 'INFO',
