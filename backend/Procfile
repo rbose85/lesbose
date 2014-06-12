@@ -1,1 +1,1 @@
-web: gunicorn les.wsgi:application
+web: gunicorn les.wsgi.heroku:application
