@@ -27,6 +27,8 @@ INSTALLED_APPS += (
 
 WSGI_APPLICATION = 'les.wsgi.heroku.application'
 
+MIDDLEWARE_CLASSES = ('sslify.middleware.SSLifyMiddleware', ) + MIDDLEWARE_CLASSES
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -81,6 +83,7 @@ LOGGING = {
 
 SESSION_COOKIE_SECURE = True
 
+CSRF_COOKIE_DOMAIN = SITE_DOMAIN
 CSRF_COOKIE_SECURE = True
 
 
