@@ -9,18 +9,23 @@
 #   $ ln -s path/to/proj/backend/config/postactivate postactivate
 #
 
+echo_msg () {
+    echo "\n\t WARNING: $1 \n"
+    echo -n "Press [Enter] key to continue ..." && read
+}
+
 proj_path () {
     local var
 
     var="$VIRTUALENVWRAPPER_PROJECT_FILENAME"
     if [ -z "$VIRTUALENVWRAPPER_PROJECT_FILENAME" ] ; then
-        echo "WARNING: Unable to locate env variable, $var"
+        echo_msg "Unable to locate env variable, $var"
         return 1
     fi
 
     var="$VIRTUAL_ENV"
     if [ -z "$VIRTUAL_ENV" ] ; then
-        echo "WARNING: Unable to locate env variable, $var"
+        echo_msg "Unable to locate env variable, $var"
         return 1
     fi
 
@@ -30,7 +35,7 @@ proj_path () {
 }
 
 run_script () {
-    [ -r $1 ] || { echo "WARNING: Unable to locate file, $1"; return 1 }
+    [ -r $1 ] || { echo_msg "Unable to locate file, $1"; return 1 }
     . $1
 }
 
@@ -40,5 +45,6 @@ export DJANGO_SETTINGS_MODULE='les.settings.local'
 run_script "$(proj_path)/backend/config/venvwrapper/secret-key"
 run_script "$(proj_path)/backend/config/venvwrapper/database"
 
+unset -f echo_msg
 unset -f proj_path
 unset -f run_script
