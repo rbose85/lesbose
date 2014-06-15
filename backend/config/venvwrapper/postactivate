@@ -34,8 +34,7 @@ proj_path () {
 }
 
 run_script () {
-    [ -r $1 ] || { echo_msg "Unable to locate file, $1"; return 1 }
-    . $1
+    [ -r $1 ] && . $1 || { echo_msg "Unable to locate file, $1" }
 }
 
 export PYTHONPATH="$(proj_path)/backend"
