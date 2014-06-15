@@ -3,8 +3,7 @@
 
 # symlink this file to venv postactivate
 #
-#   $ cdvirtualenv
-#   $ cd bin
+#   $ cdvirtualenv && cd bin
 #   $ rm postactivate
 #   $ ln -s path/to/proj/backend/config/postactivate postactivate
 #
